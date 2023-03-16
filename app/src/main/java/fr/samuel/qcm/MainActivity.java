@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Questionnaire qcm;
+    private Questionnaire qcm = Questionnaire.getInstance();
     private int questionNumber = 0;
 
     @Override
@@ -32,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Évènements des checkbox
         onChecked(checkBox);
-        //Création du questionnaire
-        this.qcm = new Questionnaire();
+
         //Met à jour les questionnaire
         updateQuestion(questionNumber, checkBox);
-
-        onValidate(checkBox, questionNumber);
 
     }
 
@@ -105,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateQuestion(int num, CompoundButton[] checkBox){
-        System.out.println(num);
+
+        onValidate(checkBox, num);
+
         if(num > 1){
 
             Intent intent = new Intent(MainActivity.this, RecapActivity.class);
@@ -140,14 +139,25 @@ public class MainActivity extends AppCompatActivity {
                 for (int j = 0; j < response.length; j++) {
                     response[j] = checkbox[j].isChecked();
                 }
+
                 //Vérifie les réponses
-                qcm.get(num).verify(response);
+                double result = qcm.get(num).verify(response);
+
+                if(result == 0.0){
+
+                    qcm.setScore(num,0);
+                }else{
+
+                    qcm.setScore(num,1);
+                    System.out.println(qcm.getScore(num));
+                }
+
 
                 //Décoche toutes les checkbox
                 reset(checkbox);
-                questionNumber++;
+
                 //Question suivante
-                updateQuestion(questionNumber, checkbox);
+                updateQuestion(num+1, checkbox);
 
 
             });

@@ -1,13 +1,18 @@
 package fr.samuel.qcm;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Questionnaire {
 
     private ArrayList <Question> questionlist = new ArrayList<>();
+    private static Questionnaire instance;
+    private List<Double> listScore;
 
-    public Questionnaire(){
+
+    private Questionnaire(){
         initialiseQuestionnaire();
+        this.listScore = new ArrayList<>();
     }
 
     private void initialiseQuestionnaire() {
@@ -31,6 +36,25 @@ public class Questionnaire {
 
     public Question get(int i){
         return questionlist.get(i);
+    }
+
+    public static Questionnaire getInstance() {
+        if (instance == null) {
+            instance = new Questionnaire();
+        }
+        return instance;
+    }
+
+    public double getScore(int index){
+        return listScore.get(index);
+    }
+
+    public void setScore(int index, double score){
+        listScore.add(index, score);
+    }
+
+    public int getNbQuestions(){
+        return this.questionlist.size();
     }
 
 }
