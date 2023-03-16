@@ -1,5 +1,7 @@
 package fr.samuel.qcm;
 
+import java.util.Arrays;
+
 public class Question {
 
     public String question;
@@ -13,12 +15,14 @@ public class Question {
     }
 
     public void addResponse(String prop, boolean verite){
+        //Ajoute les réponses
         for (int i = 0; i < propositions.length; i++) {
             if(propositions[i].isEmpty()){
                 propositions[i] = prop;
             }
         }
 
+        //Vrai ou faux
         for (int i = 0; i < solutions.length; i++) {
             if(!solutions[i]){
                 solutions[i] = verite;
@@ -27,6 +31,11 @@ public class Question {
     }
 
     public double verify(boolean [] solutions){
+
+        //Vérifie si nos réponses sont exactes
+        if(Arrays.equals(solutions, this.solutions)){
+            return 1;
+        }
         return 0;
     }
 }
