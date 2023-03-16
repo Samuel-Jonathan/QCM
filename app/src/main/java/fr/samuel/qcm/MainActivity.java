@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -105,13 +106,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateQuestion(int num, CompoundButton[] checkBox){
         System.out.println(num);
-        //Met à jour le numéro de question
-        TextView numQuestion = findViewById(R.id.numQuestion);
-        numQuestion.setText("Question n°" + (num+1));
+        if(num > 1){
 
-        //Met à jour les questions
-        for (int i = 0; i < checkBox.length-1; i++) {
-            checkBox[i].setText(qcm.get(num).propositions[i]);
+            Intent intent = new Intent(MainActivity.this, RecapActivity.class);
+            startActivity(intent);
+
+        }else {
+            //Met à jour le numéro de question
+            TextView numQuestion = findViewById(R.id.numQuestion);
+            numQuestion.setText("Question n°" + (num + 1) + "/20");
+
+            //Met à jour les questions
+            for (int i = 0; i < checkBox.length - 1; i++) {
+                checkBox[i].setText(qcm.get(num).propositions[i]);
+            }
         }
     }
 
@@ -137,14 +145,12 @@ public class MainActivity extends AppCompatActivity {
 
                 //Décoche toutes les checkbox
                 reset(checkbox);
-
+                questionNumber++;
                 //Question suivante
-                updateQuestion(num+1, checkbox);
+                updateQuestion(questionNumber, checkbox);
 
 
             });
-
-
 
             //Annule
             alert.setNegativeButton("Annuler", (dialogInterface, i) -> {
