@@ -3,23 +3,21 @@ package fr.samuel.qcm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Questionnaire qcm;
+    private int questionNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        onChecked();
-
-    }
-
-    private void onChecked(){
         CompoundButton[] checkBox = new CompoundButton[5];
-
 
         //Récupère les checkbox
         checkBox[0] = findViewById(R.id.checkBox);
@@ -27,6 +25,17 @@ public class MainActivity extends AppCompatActivity {
         checkBox[2] = findViewById(R.id.checkBox3);
         checkBox[3] = findViewById(R.id.checkBox4);
         checkBox[4] = findViewById(R.id.checkBox5);
+
+        onChecked(checkBox);
+        this.qcm = new Questionnaire();
+        updateQuestion(questionNumber, checkBox);
+
+    }
+
+    private void onChecked(CompoundButton [] checkBox){
+
+
+
 
         //Si on coche la checkbox "Aucun des choix ci-dessus", ça décoche les autres checkbox
         checkBox[4].setOnClickListener(e->{
@@ -87,5 +96,15 @@ public class MainActivity extends AppCompatActivity {
                 checkBox[4].toggle();
             }
         });
+    }
+
+    private void updateQuestion(int num, CompoundButton[] checkBox){
+        TextView numQuestion = findViewById(R.id.numQuestion);
+        numQuestion.setText("Question n°" + num);
+
+        for (int i = 0; i < checkBox.length-1; i++) {
+            checkBox[i].setText(qcm.get(num).propositions[i]);
+
+        }
     }
 }

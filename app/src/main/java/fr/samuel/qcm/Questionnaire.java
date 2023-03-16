@@ -26,7 +26,7 @@ public class Questionnaire {
         questionlist.add(q);
     }
 
-    private Question get(int i){
+    public Question get(int i){
         return questionlist.get(i);
     }
 

@@ -10,15 +10,17 @@ public class Question {
 
     public Question(String question){
         this.question = question;
-        this.propositions = new String[4];
+        this.propositions = new String[]{"", "", "", ""};
         this.solutions = new boolean[4];
     }
 
     public void addResponse(String prop, boolean verite){
         //Ajoute les réponses
         for (int i = 0; i < propositions.length; i++) {
-            if(propositions[i].isEmpty()){
+            if(propositions[i].equals("")){
+
                 propositions[i] = prop;
+                break;
             }
         }
 
