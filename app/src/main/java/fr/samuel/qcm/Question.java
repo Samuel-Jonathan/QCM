@@ -18,7 +18,6 @@ public class Question {
         //Ajoute les réponses
         for (int i = 0; i < propositions.length; i++) {
             if(propositions[i].equals("")){
-
                 propositions[i] = prop;
                 break;
             }

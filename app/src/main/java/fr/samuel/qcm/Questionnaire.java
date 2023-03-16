@@ -11,6 +11,8 @@ public class Questionnaire {
     }
 
     private void initialiseQuestionnaire() {
+
+        //Première question
         Question q = new Question("On considère les Etats Unis");
         q.addResponse("La capitale est New York", false);
         q.addResponse("Le pays est indépendant depuis 1774", true);
@@ -18,6 +20,7 @@ public class Questionnaire {
         q.addResponse("C'est un état fédéral qui compte 52 états", false);
         questionlist.add(q);
 
+        //Deuxième question
         q = new Question("On considère les fruits et les légumes");
         q.addResponse("La tomate est un fruit", true);
         q.addResponse("La pomme de terre vient d'Asie", false);
