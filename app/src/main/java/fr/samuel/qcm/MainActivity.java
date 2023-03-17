@@ -140,18 +140,10 @@ public class MainActivity extends AppCompatActivity {
                     response[j] = checkbox[j].isChecked();
                 }
 
-                //Vérifie les réponses
-                double result = qcm.get(num).verify(response);
+                //Vérifie les réponses et calcul le score
+                double score = qcm.get(num).verify(response);
 
-                if(result == 0.0){
-
-                    qcm.setScore(num,0);
-                }else{
-
-                    qcm.setScore(num,1);
-                    System.out.println(qcm.getScore(num));
-                }
-
+                qcm.setScore(num,score);
 
                 //Décoche toutes les checkbox
                 reset(checkbox);

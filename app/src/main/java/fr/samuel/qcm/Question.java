@@ -26,10 +26,21 @@ public class Question {
     }
 
     public double verify(boolean [] solutions){
+
+        double score = 0;
+
         //Vérifie si nos réponses sont exactes
-        if(Arrays.equals(solutions, this.solutions)){
-            return 1;
+        for (int i = 0; i < solutions.length; i++) {
+            if(solutions[i] == this.solutions[i]){
+                score += 0.25;
+            }else{
+                score -= 0.25;
+            }
         }
-        return 0;
+        return score;
+       /* if(Arrays.equals(solutions, this.solutions)){
+            return 1;
+        }*/
+
     }
 }
