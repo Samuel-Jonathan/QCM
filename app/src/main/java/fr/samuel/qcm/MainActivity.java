@@ -115,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
             TextView numQuestion = findViewById(R.id.numQuestion);
             numQuestion.setText("Question n°" + (num + 1) + "/20");
 
+            //Met à jour la question
+            TextView question = findViewById(R.id.question);
+            question.setText(qcm.get(num).question);
+
             //Met à jour les questions
             for (int i = 0; i < checkBox.length - 1; i++) {
                 checkBox[i].setText(qcm.get(num).propositions[i]);
@@ -145,8 +149,13 @@ public class MainActivity extends AppCompatActivity {
 
                 qcm.setScore(num,score);
 
+                //Sauvegarde les réponses
+                qcm.setResponses(response);
+
                 //Décoche toutes les checkbox
                 reset(checkbox);
+
+                checkbox[4].toggle();
 
                 //Question suivante
                 updateQuestion(num+1, checkbox);

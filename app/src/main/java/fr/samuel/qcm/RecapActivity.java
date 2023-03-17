@@ -3,9 +3,11 @@ package fr.samuel.qcm;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,6 +37,13 @@ public class RecapActivity extends AppCompatActivity {
         //Affichage de la note totale
         TextView noteTotale = findViewById(R.id.noteTotale);
         noteTotale.setText("Note totale : " + scoreTotal);
+
+        scores.setOnItemClickListener((adapterView, view, position, id) -> {
+
+            Intent intent = new Intent(RecapActivity.this, CorrectionActivity.class).putExtra("position", id);
+            startActivity(intent);
+
+        });
 
     }
 }

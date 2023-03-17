@@ -8,11 +8,13 @@ public class Questionnaire {
     private ArrayList <Question> questionlist = new ArrayList<>();
     private static Questionnaire instance;
     private List<Double> listScore;
+    private List<boolean[]> responses;
 
 
     private Questionnaire(){
         initialiseQuestionnaire();
         this.listScore = new ArrayList<>();
+        this.responses = new ArrayList<>();
     }
 
     private void initialiseQuestionnaire() {
@@ -51,6 +53,14 @@ public class Questionnaire {
 
     public void setScore(int index, double score){
         listScore.add(index, score);
+    }
+
+    public void setResponses(boolean [] responses){
+        this.responses.add(responses);
+    }
+
+    public List<boolean[]> getResponses() {
+        return responses;
     }
 
     public int getNbQuestions(){

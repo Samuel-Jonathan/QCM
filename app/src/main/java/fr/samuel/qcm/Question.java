@@ -1,7 +1,5 @@
 package fr.samuel.qcm;
 
-import java.util.Arrays;
-
 public class Question {
 
     public String question;
@@ -38,9 +36,6 @@ public class Question {
             }
         }
         return score;
-       /* if(Arrays.equals(solutions, this.solutions)){
-            return 1;
-        }*/
 
     }
 }
