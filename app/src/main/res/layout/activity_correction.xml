@@ -54,9 +54,10 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:maxWidth="375dp"
         android:text="Choix 1"
         android:textSize="23sp"
         android:clickable="false"
@@ -68,9 +69,10 @@
 
     <CheckBox
         android:id="@+id/checkBox2"
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:maxWidth="375dp"
         android:text="Choix 2"
         android:textSize="23sp"
         android:clickable="false"
@@ -82,9 +84,10 @@
 
     <CheckBox
         android:id="@+id/checkBox3"
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:maxWidth="375dp"
         android:text="Choix 3"
         android:textSize="23sp"
         android:clickable="false"
@@ -96,9 +99,10 @@
 
     <CheckBox
         android:id="@+id/checkBox4"
-        android:layout_width="375dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:maxWidth="375dp"
         android:text="Choix 4"
         android:textSize="23sp"
         android:clickable="false"
@@ -113,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:maxWidth="375dp"
         android:checked="true"
         android:clickable="false"
         android:text="Aucun des choix ci-dessus"
