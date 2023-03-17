@@ -38,4 +38,8 @@ public class Question {
         return score;
 
     }
+
+    public boolean[] getSolutions() {
+        return solutions;
+    }
 }

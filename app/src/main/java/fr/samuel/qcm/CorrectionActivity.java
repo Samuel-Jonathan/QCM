@@ -2,6 +2,7 @@ package fr.samuel.qcm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -53,12 +54,19 @@ public class CorrectionActivity extends AppCompatActivity {
             if(qcm.getResponses().get(num)[i] != checkBox[i].isChecked()){
                 checkBox[i].toggle();
             }
+
+            if(qcm.get(num).getSolutions()[i]){
+                checkBox[i].setBackgroundColor(Color.GREEN);
+            }else{
+                checkBox[i].setBackgroundColor(Color.RED);
+            }
         }
 
 
         //Coche la dernière checkbox si aucune autre checkbox est coché
         if(!Arrays.equals(qcm.getResponses().get(num), new boolean[]{false,false,false,false})){
             checkBox[4].toggle();
+            checkBox[4].setBackgroundColor(Color.RED);
         }
 
 
