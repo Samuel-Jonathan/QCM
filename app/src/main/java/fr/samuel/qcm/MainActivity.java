@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         onValidate(checkBox, num);
 
-        if(num > 1){
+        if(num > qcm.getNbQuestions()-1){
 
             Intent intent = new Intent(MainActivity.this, RecapActivity.class);
             startActivity(intent);

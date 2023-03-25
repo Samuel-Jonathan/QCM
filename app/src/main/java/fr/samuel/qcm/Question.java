@@ -13,7 +13,7 @@ public class Question {
     }
 
     public void addResponse(String prop, boolean verite){
-        //Ajoute les réponses
+        //Ajoute les réponsesm
         for (int i = 0; i < propositions.length; i++) {
             if(propositions[i].equals("")){
                 propositions[i] = prop;
@@ -25,13 +25,11 @@ public class Question {
 
     public double verify(boolean [] solutions){
 
-        double score = 0;
+        double score = 1;
 
         //Vérifie si nos réponses sont exactes
         for (int i = 0; i < solutions.length; i++) {
-            if(solutions[i] == this.solutions[i]){
-                score += 0.25;
-            }else{
+            if(solutions[i] != this.solutions[i]){
                 score -= 0.25;
             }
         }

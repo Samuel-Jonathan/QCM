@@ -21,7 +21,6 @@ public class CorrectionActivity extends AppCompatActivity {
         //Récupère le questionnaire
         Questionnaire qcm = Questionnaire.getInstance();
 
-        //Récupère le numéro de la question
         Bundle extras = getIntent().getExtras();
 
         //Récupère le numéro de la question
@@ -55,7 +54,9 @@ public class CorrectionActivity extends AppCompatActivity {
                 checkBox[i].toggle();
             }
 
-            if(qcm.get(num).getSolutions()[i]){
+            if(qcm.get(num).getSolutions()[i] && checkBox[i].isChecked()){
+                checkBox[i].setBackgroundColor(Color.GREEN);
+            }else if(!qcm.get(num).getSolutions()[i] && !checkBox[i].isChecked()){
                 checkBox[i].setBackgroundColor(Color.GREEN);
             }else{
                 checkBox[i].setBackgroundColor(Color.RED);
@@ -64,11 +65,16 @@ public class CorrectionActivity extends AppCompatActivity {
 
 
         //Coche la dernière checkbox si aucune autre checkbox est coché
-        if(!Arrays.equals(qcm.getResponses().get(num), new boolean[]{false,false,false,false})){
+        if(!Arrays.equals(qcm.getResponses().get(num), new boolean[]{false,false,false,false})) {
             checkBox[4].toggle();
-            checkBox[4].setBackgroundColor(Color.RED);
         }
 
-
+        checkBox[4].setBackgroundColor(Color.RED);
+        for (int i = 0; i < qcm.get(num).getSolutions().length; i++) {
+            if(qcm.get(num).getSolutions()[i] && !checkBox[4].isChecked()){
+                checkBox[4].setBackgroundColor(Color.GREEN);
+                break;
+            }
+        }
     }
 }
