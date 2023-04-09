@@ -34,6 +34,13 @@ public class Questionnaire {
         q.addResponse("Il faut manger 5 fruite set légumes par jour", true);
         q.addResponse("La banane contient de la vitamine C", false);
         questionlist.add(q);
+
+        q = new Question("Bonjour");
+        q.addResponse("a", true);
+        q.addResponse("b", false);
+        q.addResponse("c", true);
+        q.addResponse("d", false);
+        questionlist.add(q);
     }
 
     public Question get(int i){
